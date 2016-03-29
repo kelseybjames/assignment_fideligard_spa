@@ -14,6 +14,15 @@ stockApp.config(function($stateProvider, $urlRouterProvider) {
         },
 
         'stockpanel': {
+          // resolve: {
+          //   someProperty:  function( $http ){
+          //     return $http( { method: 'GET', url: '/someUrl' } )
+          //     .then (function (data) {
+          //       return doSomeStuffFirst( data );
+          //     });
+          //  }, 
+          // },
+          
           templateUrl: 'templates/stock_panel.html',
           controller: 'StockCtrl'
         },

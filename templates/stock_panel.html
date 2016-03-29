@@ -9,7 +9,7 @@
     <th>Trade?</th>
   </thead>
   <tbody>
-    <tr ng-repeat='(symbol, data) in stocksByDate'>
+    <tr ng-repeat='(symbol, data) in stocksTable' ng-model="stocksTable">
       <td>{{ symbol }}</td>
       <td>{{ data['0'] | currency }}</td>
       <td>{{ data['1'] - data['0'] | currency }}</td>
@@ -19,4 +19,3 @@
     </tr>
   </tbody>
 </table>
-<button ng-click='getByDate()'>Get Data</button>
