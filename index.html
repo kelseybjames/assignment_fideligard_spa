@@ -1,0 +1,36 @@
+<html>
+<head>
+  <title>Fideligard</title>
+ 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  
+  <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js" ></script>
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+  <script src = "js/ui-bootstrap-tpls-1.2.5.min.js"></script>
+  
+</head>
+  <body ng-app='stockApp'>
+
+  <!-- Navbar -->
+  <ui-view='navbar'></ui-view>
+
+  <div class="container" ng-controller="StockCtrl">
+    <div class="row ">
+
+      <div class = "col-md-6" ui-view='stockpanel'></div>
+
+      <div class = "col-md-6">
+
+        <div class='row' ui-view='datepicker'>< </div>
+
+        <div class='row' ui-view='main'></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- modules -->
+  <script src="js/app.js"></script>
+
+  <script src="js/controllers/stock_controller.js"></script>
+
+</html>
