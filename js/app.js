@@ -10,21 +10,20 @@ stockApp.config(function($stateProvider, $urlRouterProvider) {
       url: '/',
       views: {
         'navbar': {
-          //templateUrl: 'templates/navbar.html'
+          templateUrl: 'templates/navbar.html'
         },
 
         'stockpanel': {
           templateUrl: 'templates/stock_panel.html',
-          //template: '<h1> HI <hi>',
           controller: 'StockCtrl'
         },
 
         'datepicker': {
-          //templateUrl: 'templates/date_picker.html'
+          templateUrl: 'templates/datepicker.html'
         },
 
         'main': {
-          //templateUrl: 'templates/main.html'
+          templateUrl: 'templates/main.html'
         },
       },
     })
