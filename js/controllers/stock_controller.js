@@ -4,7 +4,7 @@ stockApp.controller("StockCtrl",
     //console.log( $stateParams );
 
     $scope.stocks = {};
-    $scope.stockOwned = ["AAPL", "GOOG"];
+    $scope.stockOwned = ["AAPL", "GOOG", "YHOO", "CSCO", "AMZN"];
     $scope.currentDate = '2014-12-31';
     $scope.stocksByDate = {};
 
@@ -42,26 +42,52 @@ stockApp.controller("StockCtrl",
       var sevenDaysAgo = $scope.daysAgo(7);
       var thirtyDaysAgo = $scope.daysAgo(30);
 
-      console.log('One day ago: ' + oneDayAgo);
-      console.log('Seven days ago: ' + sevenDaysAgo);
-      console.log('Thirty days ago: ' + thirtyDaysAgo);
+      console.log('One day ago: ' + oneDayAgo.getTime());
+      console.log('Seven days ago: ' + sevenDaysAgo.getTime());
+      console.log('Thirty days ago: ' + thirtyDaysAgo.getTime());
 
 
       console.log('got to getByDate');
+
+
+      var d = new Date($scope.currentDate);
+      d = d.toISOString().substring(0, 10);
+
       var stockArray = Object.keys($scope.stocks);
       stockArray.forEach(function(stock) {
         var newStockData = {};
         var results = $scope.stocks[stock];
-        results.forEach(function(result) {
-          if(Date($scope.currentDate) == Date(result.Date)) {
+   
+        results.forEach(function(result,index) {
+          
+          if(d === result.Date) {
+            console.log("Index is " + index);
+
             newStockData['0'] = result.Close;
-          } else if (oneDayAgo == Date(result.Date)) {
-            newStockData['1'] = result.Close;
-          } else if (sevenDaysAgo == Date(result.Date)) {
-            newStockData['7'] = result.Close;
-          } else if (thirtyDaysAgo == Date(result.Date)) {
-            newStockData['30'] = result.Close;
+            var next = index + 1;
+
+            console.log("Next Result");
+            console.log(results[next]);
+
+            newStockData['1'] = results[next].Close;
+
+            next = index + 7
+            newStockData['7'] = results[next].Close;
+
+            next = index + 30
+            newStockData['30'] = results[next].Close;
+  
           }
+
+          // if(Date($scope.currentDate) == Date(result.Date)) {
+          //   newStockData['0'] = result.Close;
+          // } else if (oneDayAgo.getTime() == (new Date(result.Date)).getTime()) {
+          //   newStockData['1'] = result.Close;
+          // } else if (sevenDaysAgo.getTime() == (new Date(result.Date)).getTime()) {
+          //   newStockData['7'] = result.Close;
+          // } else if (thirtyDaysAgo.getTime() == (new Date(result.Date)).getTime()) {
+          //   newStockData['30'] = result.Close;
+          // }
         })
         $scope.stocksByDate[stock] = newStockData;
         console.log($scope.stocksByDate);

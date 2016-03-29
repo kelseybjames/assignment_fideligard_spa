@@ -17,13 +17,14 @@
   <div class="container" ng-controller="StockCtrl">
     <div class="row ">
 
-      <div ui-view='stockpanel' class="col-md-6"></div>
 
       <div class = "col-md-6">
+        <div ui-view='stockpanel'></div>
+      </div>
 
 <!--         <div class='row' ui-view='datepicker'></div> -->
-        <h1>Stock Panel</h1>
-        <table>
+<!--         <h1>Stock Panel</h1>
+        <table class="table table-striped">
           <thead>
             <th>Symbol</th>
             <th>Price</th>
@@ -43,7 +44,7 @@
             </tr>
           </tbody>
         </table>
-        <button ng-click='getByDate()'>Get Data</button>
+        <button ng-click='getByDate()'>Get Data</button> -->
 
         <div class='row' ui-view='main'></div>
       </div>

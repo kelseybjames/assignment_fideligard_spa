@@ -2,7 +2,7 @@ var stockApp = angular.module("stockApp", ['ui.router', 'ui.bootstrap'] );
 
 stockApp.config(function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise('/index');
+  $urlRouterProvider.otherwise('/index/stockpanel');
 
   $stateProvider
 
