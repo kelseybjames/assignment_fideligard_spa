@@ -1,0 +1,21 @@
+<h1>Stock Panel</h1>
+<table>
+  <thead>
+    <th>Symbol</th>
+    <th>Price</th>
+    <th>1 day ago</th>
+    <th>7 days ago</th>
+    <th>30 days ago</th>
+    <th>Trade?</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat='(symbol, data) in stocks'>
+      <td>{{ symbol }}</td>
+      <td>{{ data.Close }}</td>
+      <td>{{ data.Close }}</td>
+      <td>{{ data.Close }}</td>
+      <td>{{ data.Close }}</td>
+      <td>trade</td>
+    </tr>
+  </tbody>
+</table>

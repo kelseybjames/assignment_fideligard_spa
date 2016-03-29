@@ -1,6 +1,6 @@
-var app = angular.module("stockApp", ['ui.router', 'ui.bootstrap'] );
+var stockApp = angular.module("stockApp", ['ui.router', 'ui.bootstrap'] );
 
-app.config(function($stateProvider, $urlRouterProvider) {
+stockApp.config(function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise('/index');
 
@@ -15,7 +15,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
         'stockpanel': {
           templateUrl: 'templates/stock_panel.html',
-          controller: 'stockCtrl'
+          controller: 'StockCtrl'
         },
 
         'datepicker': {
@@ -50,6 +50,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 
 // enable error handling
-app.run(function($rootScope){
+stockApp.run(function($rootScope){
   $rootScope.$on("$stateChangeError", console.log.bind(console));
 });

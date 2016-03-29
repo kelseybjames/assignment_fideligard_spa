@@ -1,4 +1,4 @@
-<html>
+<html ng-app='stockApp'>
 <head>
   <title>Fideligard</title>
  
@@ -9,19 +9,41 @@
   <script src = "js/ui-bootstrap-tpls-1.2.5.min.js"></script>
   
 </head>
-  <body ng-app='stockApp'>
+  <body>
 
   <!-- Navbar -->
-  <ui-view='navbar'></ui-view>
+<!--   <ui-view='navbar'></ui-view> -->
 
   <div class="container" ng-controller="StockCtrl">
     <div class="row ">
 
-      <div class = "col-md-6" ui-view='stockpanel'></div>
+      <div ui-view='stockpanel' class="col-md-6"></div>
 
       <div class = "col-md-6">
 
-        <div class='row' ui-view='datepicker'>< </div>
+<!--         <div class='row' ui-view='datepicker'></div> -->
+        <h1>Stock Panel</h1>
+        <table>
+          <thead>
+            <th>Symbol</th>
+            <th>Price</th>
+            <th>1 day ago</th>
+            <th>7 days ago</th>
+            <th>30 days ago</th>
+            <th>Trade?</th>
+          </thead>
+          <tbody>
+            <tr ng-repeat='(symbol, data) in stocksByDate'>
+              <td>{{ symbol }}</td>
+              <td>{{ data['0'] | currency }}</td>
+              <td>{{ data['1'] | currency }}</td>
+              <td>{{ data['7'] | currency }}</td>
+              <td>{{ data['30'] | currency }}</td>
+              <td>trade</td>
+            </tr>
+          </tbody>
+        </table>
+        <button ng-click='getByDate()'>Get Data</button>
 
         <div class='row' ui-view='main'></div>
       </div>

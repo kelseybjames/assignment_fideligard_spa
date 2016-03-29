@@ -25,3 +25,8 @@ In App.js use these routes and states
 >>/stocks/transactions (stocks.portfolio)
 >>/stocks/portfolio (stocks.portfolio)
     
+key:stock symbol
+value: {0: price,
+        1: price,
+        7: price,
+        30: price}
