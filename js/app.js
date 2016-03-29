@@ -19,7 +19,8 @@ stockApp.config(function($stateProvider, $urlRouterProvider) {
         },
 
         'datepicker': {
-          templateUrl: 'templates/datepicker.html'
+          templateUrl: 'templates/datepicker.html',
+          controller: 'DateCtrl'
         },
 
         'main': {
