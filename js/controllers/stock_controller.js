@@ -4,7 +4,7 @@ stockApp.controller("StockCtrl",
     //console.log( $stateParams );
 
     $scope.stocks = {};
-    $scope.stockOwned = ["AAPL", "GOOG", "YHOO", "CSCO", "AMZN"];
+    $scope.stockOwned = ["AAPL", "GOOG", "YHOO", "CSCO", "AMZN", "FB", "FFIV", "TSLA", "WDAY"];
     $scope.currentDate = '2014-12-31';
     $scope.stocksByDate = {};
 

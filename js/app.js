@@ -2,7 +2,7 @@ var stockApp = angular.module("stockApp", ['ui.router', 'ui.bootstrap'] );
 
 stockApp.config(function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise('/index/stockpanel');
+  $urlRouterProvider.otherwise('/');
 
   $stateProvider
 
@@ -10,20 +10,21 @@ stockApp.config(function($stateProvider, $urlRouterProvider) {
       url: '/',
       views: {
         'navbar': {
-          templateUrl: 'templates/navbar.html'
+          //templateUrl: 'templates/navbar.html'
         },
 
         'stockpanel': {
           templateUrl: 'templates/stock_panel.html',
+          //template: '<h1> HI <hi>',
           controller: 'StockCtrl'
         },
 
         'datepicker': {
-          templateUrl: 'templates/date_picker.html'
+          //templateUrl: 'templates/date_picker.html'
         },
 
         'main': {
-          templateUrl: 'templates/main.html'
+          //templateUrl: 'templates/main.html'
         },
       },
     })

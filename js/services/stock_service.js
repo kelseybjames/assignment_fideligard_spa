@@ -1,55 +1,87 @@
 app.factory('stockService', function() {
+  
+  var obj = {}
+  var stocks = {};
+  var stockOwned = ["AAPL", "GOOG", "YHOO", "CSCO", "AMZN", "FB", "FFIV", "TSLA", "WDAY"];
+  var stocksByDate = {};
 
-  var STOCKS = {};
-
-  var obj = {};
-
-  obj.queryYahoo = function() {
-    queryTxt = "http://query.yahooapis.com/v1/public/yql?q=
-                select * from   yahoo.finance.historicaldata
-                         where  symbol    = "AAPL"
-                         and    startDate = "2011-09-11"
-                         and    endDate   = "2014-02-11"
-                &format=json
-                &diagnostics=true
-                &env=store://datatables.org/alltableswithkeys
-                &callback=" 
+  obj.getStocksOwned = function() {
+    return stockOwned;
   }
 
-   
-  obj.getProducts = function() {
-    return PRODUCTS;
+  obj.getStocksByDate = function() {
+    return stocksByDate;
   }
 
-  obj.getCategories = function() {
-    return CATEGORIES;
+  obj.getStocks = function() {
+    return stocks;
   }
 
-  var names = [];
-  for (var i=0; i < 10; i++) {
-   var category = {};
-   category.id = i;
-   category.name = faker.commerce.department();
+  obj.getQuery = function() {
+    
+    prefix = 'http://query.yahooapis.com/v1/public/yql?q=select * from yahoo.finance.historicaldata where symbol = "'
+    suffix='" and startDate = "2014-01-01" and endDate = "2014-12-31" &format=json &diagnostics=true &env=store://datatables.org/alltableswithkeys&callback='
 
-   if (names.indexOf(category.name) == -1) {
-     names.push(category.name);
-     CATEGORIES.push(category);
-   } else {
-     i --;
-   }
-  }
+    for (var i = 0; i < stockOwned.length; i++) {
+      queryTxt = prefix+stockOwned[i]+suffix;
+      $http.
+        get( queryTxt ).
+        then( function( response ){
+          var data = response.data.query.results.quote;
+          var key = data[0].Symbol;
+          stocks[key] = data;
+        }, function( data ){
+          stocks = undefined;
+        }
+      );
+    };
+    //$scope.getByDate();
+  };
 
-  for (var i=0; i < 30; i++) {
-   var product = {};
-   product.id = i;
-   product.name = faker.commerce.productName();
-   product.description = faker.lorem.paragraph();
-   product.price = faker.commerce.price();
-   var index = Math.floor(Math.random() * 10);
+  obj.getByDate = function(currentDate) {
+    stocksByDate = {};
+    
+    var oneDayAgo = daysAgo(1,currentDate);
+    var sevenDaysAgo = daysAgo(7,currentDate);
+    var thirtyDaysAgo = daysAgo(30,currentDate);
 
-   product.category = CATEGORIES[index].id;
-   PRODUCTS.push(product);
-  }
+    var d = new Date(currentDate);
+    d = d.toISOString().substring(0, 10);
+
+    var stockArray = Object.keys(stocks);
+    stockArray.forEach(function(stock) {
+      var newStockData = {};
+      var results = stocks[stock];
+ 
+      results.forEach(function(result,index) {
+        
+        if(d === result.Date) {
+
+          newStockData['0'] = result.Close;
+          var next = index + 1;
+
+          newStockData['1'] = results[next].Close;
+
+          next = index + 7
+          newStockData['7'] = results[next].Close;
+
+          next = index + 30
+          newStockData['30'] = results[next].Close;
+
+        }
+      })
+
+      stocksByDate[stock] = newStockData;
+    })
+  };
+
+  obj.daysAgo = function(num.currentDate) {
+    var d = new Date(currentDate);
+    var ts = d.getTime();
+    var seven = ts - (num * 24 * 60 * 60 * 1000);
+    var newDate = new Date(seven);
+    return newDate;
+  };
 
   return obj;
 })
