@@ -12,9 +12,9 @@
     <tr ng-repeat='(symbol, data) in stocksByDate'>
       <td>{{ symbol }}</td>
       <td>{{ data['0'] | currency }}</td>
-      <td>{{ data['1'] | currency }}</td>
-      <td>{{ data['7'] | currency }}</td>
-      <td>{{ data['30'] | currency }}</td>
+      <td>{{ data['1'] - data['0'] | currency }}</td>
+      <td>{{ data['7'] - data['0'] | currency }}</td>
+      <td>{{ data['30']- data['0'] | currency }}</td>
       <td>trade</td>
     </tr>
   </tbody>
