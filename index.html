@@ -11,6 +11,9 @@
 </head>
   <body>  
   <div class="container" ng-controller="StockCtrl">
+    <div class='row'>
+      <div ui-view='navbar'></div>
+    </div>
     <div class="row">
       <div class="col-xs-6">
         <div ui-view='stockpanel'></div>
@@ -43,5 +46,5 @@
   <script src="js/controllers/date_controller.js"></script>
   <script src="js/controllers/trade_controller.js"></script>
   <script src="js/controllers/transaction_controller.js"></script>
-
+  <script src="js/controllers/portfolio_controller.js"></script>
 </html>

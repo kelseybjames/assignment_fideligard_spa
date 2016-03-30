@@ -8,7 +8,12 @@ stockApp.factory('transactionService', function() {
   };
 
   obj.changeUserStocks = function(stock, quantity) {
-    userStocks[stock] += quantity;
+    if (userStocks[stock]) {
+      var prevCount = Number(userStocks[stock]);
+      userStocks[stock] = prevCount + quantity;
+    } else {
+      userStocks[stock] = quantity;
+    }
   };
 
   obj.getTransactions = function() {
@@ -17,6 +22,14 @@ stockApp.factory('transactionService', function() {
 
   obj.addTransaction = function(transaction) {
     transactions.push(transaction);
+    var stockQuantity;
+    if (transaction.type === 'Buy') {
+      stockQuantity = transaction.quantity;
+    } else {
+      stockQuantity = transaction.quantity * -1;
+    }
+    obj.changeUserStocks(transaction.symbol, stockQuantity);
+    console.log(userStocks);
   };
 
   return obj;
