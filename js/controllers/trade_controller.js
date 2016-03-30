@@ -5,8 +5,9 @@ stockApp.controller('TradeCtrl', ['$scope', '$stateParams', 'tradeService', func
   $scope.tradeForm = {};
   $scope.totalCash = 1000000;
   $scope.orderStatus = 'Invalid';
+  $scope.price = $stateParams.data[0];
 
   $scope.placeOrder = function() {
-    console.log($stateParams);
+    console.log($stateParams.data);
   };
 }])

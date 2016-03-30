@@ -2,15 +2,15 @@
 <input type='text' ng-model='currentFilter'>
 <table class="table table-striped">
   <thead>
-    <th>Symbol</th>
-    <th>Price</th>
-    <th>1 day ago</th>
-    <th>7 days ago</th>
-    <th>30 days ago</th>
-    <th>Trade?</th>
+    <th ng-click="setOrder(symbol)">Symbol</th>
+    <th ng-click="setOrder(data['0'])">Price</th>
+    <th ng-click="setOrder(data['0'] - data['1'])">1 day ago</th>
+    <th ng-click="setOrder(data['0'] - data['7'])">7 days ago</th>
+    <th ng-click="setOrder(data['0'] - data['30'])">30 days ago</th>
+    <th ng-click="setOrder(trade)">Trade?</th>
   </thead>
   <tbody>
-    <tr ng-repeat='(symbol, data) in stocksTable | stockFilter: currentFilter' ng-model="stocksTable">
+    <tr ng-repeat='(symbol, data) in stocksTable | stockFilter: currentFilter | orderBy: currentOrder' ng-model="stocksTable">
       <td>{{ symbol }}</td>
       <td>{{ data['0'] | currency }}</td>
       <td>{{ data['0'] - data['1'] | currency }}</td>

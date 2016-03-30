@@ -2,6 +2,7 @@ stockApp.controller("StockCtrl",
   ['$scope', 'dateService', 'stockService', 'tradeService', function($scope, dateService, stockService, tradeService){
 
     $scope.currentFilter = '';
+    $scope.currentOrder = '';
     $scope.currentDate = dateService.getCurrentDate();
     $scope.stocksTable = stockService.getStocksByDate();
     $scope.stocks = stockService.getQuery();
@@ -18,6 +19,10 @@ stockApp.controller("StockCtrl",
       tradeService.setSymbol(symbol);
       console.log('Trading ' + tradeService.getSymbol());
     };
+
+    $scope.setOrder = function(header) {
+      $scope.currentOrder = header;
+    }
     
   }]
   
