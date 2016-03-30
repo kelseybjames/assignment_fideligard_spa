@@ -1,0 +1,15 @@
+<h3>Trade</h3>
+<label for='symbol'>Symbol</label>
+<input type='text' id='symbol'ng-model='symbol'>
+
+<label for='tradetype'>Buy/Sell</label>
+<select id='tradetype'>
+
+<label for='quantity'>Quantity</label>
+<input type='text' id='quantity' ng-model='quantity'>
+
+<label for='date'>Date</label>
+<input type='text' id='date'>
+
+<p>Price: {{ price }}</p>
+<p>Cost: {{ price * quantity }}</p>

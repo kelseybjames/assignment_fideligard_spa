@@ -1,4 +1,4 @@
-stockApp.factory('stockService', ['$http', function($http) {
+stockApp.factory('stockService', ['$http', '$q', function($http, $q) {
   
   var obj = {}
   var stocks = {};
@@ -74,25 +74,23 @@ stockApp.factory('stockService', ['$http', function($http) {
   };
 
   obj.getQuery = function() {
+    var requests = [];
     
     prefix = 'http://query.yahooapis.com/v1/public/yql?q=select * from yahoo.finance.historicaldata where symbol = "'
     suffix='" and startDate = "2014-01-01" and endDate = "2014-12-31" &format=json &diagnostics=true &env=store://datatables.org/alltableswithkeys&callback='
     for (var i = 0; i < stockOwned.length; i++) {
       queryTxt = prefix+stockOwned[i]+suffix;
-      $http.
-        get( queryTxt ).
-        then( function( response ){
-          var data = response.data.query.results.quote;
-          var key = data[0].Symbol;
-          stocks[key] = data;
-        }, function( data ){
-          stocks = undefined;
-          console.log('error');
-        }
-      );
+      requests.push($http.get( queryTxt ));
     };
-    //getByDate();
-    return stocks;
+    return $q.all(requests).
+      then( function( response ){
+      for (var i = 0; i < response.length; i++) {
+        var quoteArray = response[i].data.query.results.quote;
+        var symbol = quoteArray[0].Symbol;
+        console.log(quoteArray);
+        stocks[symbol] = quoteArray;
+      }
+    });
   };
 
 

@@ -38,10 +38,11 @@ stockApp.config(function($stateProvider, $urlRouterProvider) {
       },
     })
 
-    .state('main.trades', {
-      url: '/trades',
-      templateUrl: "templates/trades.html",
-      controller: 'tradesCtrl'
+    .state('main.trade', {
+      url: '/trade',
+      templateUrl: "templates/trade.html",
+      controller: 'tradeCtrl', 
+      params: { symbolParam: null }
     })
 
     .state('main.transaction', {
