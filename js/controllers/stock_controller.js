@@ -1,9 +1,7 @@
 stockApp.controller("StockCtrl",
   ['$scope', 'dateService', 'stockService', function($scope, dateService, stockService){
 
-    //console.log( $stateParams );
-
-    $scope.stocks = {};
+    $scope.currentFilter = '';
     $scope.currentDate = dateService.getCurrentDate();
     $scope.stocksTable = stockService.getStocksByDate();
     $scope.stocks = stockService.getQuery();
