@@ -1,6 +1,7 @@
 stockApp.factory('tradeService', ['$http', function($http) {
   var obj = {};
   var symbol = '';
+  var transactions = [];
 
   obj.getSymbol = function() {
     return symbol;
@@ -11,10 +12,15 @@ stockApp.factory('tradeService', ['$http', function($http) {
   };
 
   obj.processForm = function() {
-    $http({
-      method: 'POST',
-      
-    })
+    
+  };
+
+  obj.getTransactions = function() {
+    return transactions;
+  };
+
+  obj.addTransaction = function(transaction) {
+    transactions.push(transaction);
   };
 
   return obj;

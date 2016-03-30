@@ -37,10 +37,11 @@ stockApp.config(function($stateProvider, $urlRouterProvider) {
       params: { symbol: null, data: null }
     })
 
-    .state('index.transaction', {
-      url: 'transaction',
-      templateUrl: "templates/transaction.html",
-      controller: 'transactionCtrl'
+    .state('index.transactions', {
+      url: 'transactions',
+      templateUrl: "templates/transactions.html",
+      controller: 'TransactionCtrl',
+      params: { quantity: null, symbol: null, price: null, type: null, date: null }
     })
 
     .state('index.portfolio', {

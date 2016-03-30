@@ -18,21 +18,9 @@ stockApp.factory('stockService', ['$http', '$q', function($http, $q) {
   };
 
   obj.getByDate = function(currentDate) {
-    console.log("In getbydate");
-
-    console.log("Current Date In SS: " + currentDate);    
-
     var oneDayAgo = obj.daysAgo(1,currentDate);
     var sevenDaysAgo = obj.daysAgo(7,currentDate);
     var thirtyDaysAgo = obj.daysAgo(30,currentDate);
-
-    console.log('One day ago: ' + oneDayAgo);
-
-    console.log('One day ago: ' + oneDayAgo.getTime());
-    console.log('Seven days ago: ' + sevenDaysAgo.getTime());
-    console.log('Thirty days ago: ' + thirtyDaysAgo.getTime());
-
-    console.log('got to getByDate');
 
     var d = new Date(currentDate);
 
@@ -70,7 +58,6 @@ stockApp.factory('stockService', ['$http', '$q', function($http, $q) {
 
       stocksByDate[stock] = newStockData;
     })
-    //return stocksByDate;
   };
 
   obj.getQuery = function() {

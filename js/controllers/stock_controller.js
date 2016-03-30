@@ -9,10 +9,8 @@ stockApp.controller("StockCtrl",
     
     $scope.getByDate = function() {        
       $scope.currentDate = Number(dateService.getCurrentDate());  
-      console.log("In main get by");
       stockService.getByDate($scope.currentDate);
       $scope.stocksTable = stockService.getStocksByDate();
-      //console.log($scope.stocksByDate);
     };
 
     $scope.trade = function(symbol) {
@@ -21,6 +19,7 @@ stockApp.controller("StockCtrl",
     };
 
     $scope.setOrder = function(header) {
+      console.log(header);
       $scope.currentOrder = header;
     }
     
