@@ -1,7 +1,12 @@
-stockApp.controller('TradeCtrl', ['$scope', 'dateService', 'stockService', function($scope, dateService, stockService) {
+stockApp.controller('TradeCtrl', ['$scope', '$stateParams', 'tradeService', function($scope, $stateParams, tradeService) {
 
-  $scope.currentDate = dateService.getCurrentDate();
-  $scope.stocks = stockService.getQuery();
-  $scope.symbol;
-  $scope.quantity;
+  $scope.tradeDate = $stateParams.date;
+  $scope.tradeSymbol = $stateParams.symbol;
+  $scope.tradeForm = {};
+  $scope.totalCash = 1000000;
+  $scope.orderStatus = 'Invalid';
+
+  $scope.placeOrder = function() {
+    console.log($stateParams);
+  };
 }])

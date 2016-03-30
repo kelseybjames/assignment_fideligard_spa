@@ -16,7 +16,7 @@
       <td>{{ data['0'] - data['1'] | currency }}</td>
       <td>{{ data['0'] - data['7'] | currency }}</td>
       <td>{{ data['0'] - data['30'] | currency }}</td>
-      <td><a ui-sref='main.trade({symbolParam: {{ symbol }} })'>trade</a></td>
+      <td><a ui-sref='index.trade({symbol: symbol, data: data})'>trade</a></td>
     </tr>
   </tbody>
 </table>

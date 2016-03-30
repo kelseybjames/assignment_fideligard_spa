@@ -87,7 +87,6 @@ stockApp.factory('stockService', ['$http', '$q', function($http, $q) {
       for (var i = 0; i < response.length; i++) {
         var quoteArray = response[i].data.query.results.quote;
         var symbol = quoteArray[0].Symbol;
-        console.log(quoteArray);
         stocks[symbol] = quoteArray;
       }
     });

@@ -14,14 +14,6 @@ stockApp.config(function($stateProvider, $urlRouterProvider) {
         },
 
         'stockpanel': {
-          // resolve: {
-          //   someProperty:  function( $http ){
-          //     return $http( { method: 'GET', url: '/someUrl' } )
-          //     .then (function (data) {
-          //       return doSomeStuffFirst( data );
-          //     });
-          //  }, 
-          // },
           
           templateUrl: 'templates/stock_panel.html',
           controller: 'StockCtrl'
@@ -38,21 +30,21 @@ stockApp.config(function($stateProvider, $urlRouterProvider) {
       },
     })
 
-    .state('main.trade', {
-      url: '/trade',
+    .state('index.trade', {
+      url: 'trade',
       templateUrl: "templates/trade.html",
-      controller: 'tradeCtrl', 
-      params: { symbolParam: null }
+      controller: 'TradeCtrl', 
+      params: { symbol: null, data: null }
     })
 
-    .state('main.transaction', {
-      url: '/transaction',
+    .state('index.transaction', {
+      url: 'transaction',
       templateUrl: "templates/transaction.html",
       controller: 'transactionCtrl'
     })
 
-    .state('main.portfolio', {
-      url: '/portfolio',
+    .state('index.portfolio', {
+      url: 'portfolio',
       templateUrl: "templates/portfolio.html",
       controller: 'portfolioCtrl'
     })

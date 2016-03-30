@@ -1,15 +1,28 @@
 <h3>Trade</h3>
-<label for='symbol'>Symbol</label>
-<input type='text' id='symbol'ng-model='symbol'>
-
-<label for='tradetype'>Buy/Sell</label>
-<select id='tradetype'>
-
-<label for='quantity'>Quantity</label>
-<input type='text' id='quantity' ng-model='quantity'>
-
-<label for='date'>Date</label>
-<input type='text' id='date'>
-
-<p>Price: {{ price }}</p>
-<p>Cost: {{ price * quantity }}</p>
+<div class='col-xs-5'>
+  <form name='tradeForm'>
+    <label for='symbol'>Symbol</label>
+    <p>{{ $stateParams.symbolParam }}</p>
+    <br>
+    <label for='tradeType'>Buy/Sell</label>
+    <select id='tradeType' ng-model='tradeForm.type'>
+      <option>Buy</option>
+      <option>Sell</option>
+    </select>
+    <br>
+    <label for='quantity'>Quantity</label>
+    <input type='text' id='quantity' ng-model='tradeForm.quantity'>
+    <br>
+    <label for='date'>Date</label>
+    <input type='text' id='date' placeholder='yyyy-mm-dd' ng-model='tradeForm.date'>
+    <br>
+    <p>Price: {{ price }}</p>
+    <p>Cost: {{ price * quantity }}</p>
+    <br>
+    <button class='btn btn-submit' ng-click='placeOrder()'>Place Order!</button>
+  </form>
+</div>
+<div class='col-xs-4 col-xs-offset-3'>
+  <p>Cash Available: {{ totalCash }}</p>
+  <p>Order Status: {{ orderStatus }}</p>
+</div>
