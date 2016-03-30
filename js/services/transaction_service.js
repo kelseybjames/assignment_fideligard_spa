@@ -2,6 +2,7 @@ stockApp.factory('transactionService', function() {
   var obj = {};
   var userStocks = {};
   var transactions = transactions || [];
+  var totalCash = 1000000;
 
   obj.getUserStocks = function() {
     return userStocks;
@@ -14,6 +15,14 @@ stockApp.factory('transactionService', function() {
     } else {
       userStocks[stock] = quantity;
     }
+  };
+
+  obj.getTotalCash = function() {
+    return totalCash;
+  };
+
+  obj.changeTotalCash = function(quantity) {
+    totalCash += quantity;
   };
 
   obj.getTransactions = function() {

@@ -1,4 +1,4 @@
-stockApp.factory('tradeService', ['$http', function($http) {
+stockApp.factory('tradeService', function() {
   var obj = {};
   var symbol = '';
   var transactions = [];
@@ -24,4 +24,4 @@ stockApp.factory('tradeService', ['$http', function($http) {
   };
 
   return obj;
-}])
+})

@@ -1,1 +1,12 @@
-<h1>Portfolio</h1>
+<table class='table table-striped'>
+  <thead>
+    <th>Symbol</th>
+    <th>Quantity</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat='(symbol, number) in userStocks'>
+      <td>{{ symbol }}</td>
+      <td>{{ number }}</td>
+    </tr>
+  </tbody>
+</table>
