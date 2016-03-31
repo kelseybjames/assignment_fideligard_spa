@@ -22,7 +22,7 @@ stockApp.factory('transactionService', function() {
   };
 
   obj.changeTotalCash = function(quantity) {
-    totalCash += quantity;
+    totalCash = Number(totalCash) + Number(quantity);
   };
 
   obj.getTransactions = function() {
